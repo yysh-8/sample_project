@@ -1,17 +1,13 @@
 from django.http import JsonResponse
+from datetime import datetime
 
 
 def no_rest_no_model(request):
-    guests=[
-        {
+    now=datetime.now()
+    current_time=now.strftime("%H:%M:%S")
+    server_time={
            'id':'123',
-           'name':'omar',
-           'age':'12' 
-        },
-        {
-           'id':'345',
-           'name':'ahmed',
-           'age':'15' 
+           'name':'cairo',
+           'time': current_time
         }
-        ]
-    return JsonResponse(guests,safe=False)
+    return JsonResponse(server_time,safe=False)
